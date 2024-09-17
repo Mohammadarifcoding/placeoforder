@@ -1,27 +1,37 @@
-import { useState } from "react"
+import { useRef, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { EyeIcon, EyeOffIcon } from "lucide-react"
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebookF, FaLinkedinIn } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import { Input } from "@material-tailwind/react";
+import { handleFormData } from "@/lib/handleFormData";
 
 const SignInForm = () => {
     const [showPassword, setShowPassword] = useState(false)
 
+    const formRef = useRef();
+
+    const handleFormSubmit = (e) => {
+        e.preventDefault();
+        const formData = handleFormData(formRef, e);
+        console.log(formData);
+
+    }
+
     return (
-        <div className="flex items-center justify-center flex-1 h-full sm:p-6 bg-white lg:w-1/2 md:p-10">
+        <div className="flex items-center justify-center flex-1 h-full bg-white sm:p-6 lg:w-1/2 md:p-10">
             <div className="w-full max-w-md p-10 space-y-4 rounded-lg shadow-2xl">
                 <div className="space-y-3">
                     <h5 className="font-medium ">Sign in to</h5>
                     <h3 className="font-semibold">PLACE <span className="font-light">ORDER</span> </h3>
                     <p className="text-blue-gray-300">Don&apos;t have an account? <span className=" text-accent">Get Started</span> </p>
                 </div>
-                <form className="space-y-4">
+                <form ref={formRef} onSubmit={handleFormSubmit} className="space-y-4">
                     <div className="space-y-4">
-                        <Input type="text" label="User Name" className="w-full" />
+                        <Input name="name" type="text" label="User Name" className="w-full" />
                         <div className="relative">
-                            <Input
+                            <Input name="password"
                                 type={showPassword ? "text" : "password"}
                                 label="Password"
                                 className="w-full pr-10"
@@ -38,12 +48,12 @@ const SignInForm = () => {
                     <div className="text-sm text-right ">
                         <Link to="#" className="border-b border-muted-foreground">Forgot password?</Link>
                     </div>
-                    <Button className="w-full bg-gray-900 hover:bg-gray-800">Login</Button>
+                    <Button type="submit" className="w-full bg-gray-900 hover:bg-gray-800">Sign In</Button>
                 </form>
 
                 <div className="flex items-center justify-between">
                     <div className="w-1/3 h-0.5 border" />
-                    <p className="text-blue-gray-300 whitespace-nowrap">Or login with</p>
+                    <p className="text-blue-gray-300 whitespace-nowrap">Or Sign In with</p>
                     <div className="w-1/3 h-0.5 border" />
                 </div>
 

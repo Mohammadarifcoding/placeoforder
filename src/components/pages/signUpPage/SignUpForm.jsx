@@ -1,13 +1,22 @@
-import { useState } from "react"
+import { useRef, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { EyeIcon, EyeOffIcon } from "lucide-react"
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebookF, FaLinkedinIn } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import { Checkbox, Input, Typography } from "@material-tailwind/react";
+import { handleFormData } from "@/lib/handleFormData";
 
 const SignUpForm = () => {
     const [showPassword, setShowPassword] = useState(false)
+    const formRef = useRef();
+
+    const handleFormSubmit = (e) => {
+        e.preventDefault();
+        const formData = handleFormData(formRef, e);
+        console.log(formData);
+
+    }
 
     return (
         <div className="flex items-center justify-center flex-1 h-full bg-white sm:p-6 lg:w-1/2 md:p-10">
@@ -15,7 +24,7 @@ const SignUpForm = () => {
                 <div className="space-y-3">
                     <h3 className="font-medium">Create your ID</h3>
                 </div>
-                <form className="space-y-4">
+                <form ref={formRef} onSubmit={handleFormSubmit} className="space-y-4">
                     <div className="grid grid-cols-1 gap-x-4 gap-y-10 xl:grid-cols-2">
                         <Input name="firstName" type="text" label="First Name" />
                         <Input name="lastName" type="text" label="Lastst Name" />
@@ -24,6 +33,7 @@ const SignUpForm = () => {
                         <Input name="email" type="email" label="Email" />
                         <div className="relative">
                             <Input
+                                name="password"
                                 type={showPassword ? "text" : "password"}
                                 label="Password"
                                 className="w-full pr-10"
@@ -57,7 +67,7 @@ const SignUpForm = () => {
                         containerProps={{ className: "-ml-2.5" }}
                     />
 
-                    <Button className="block px-20 bg-gray-900 hover:bg-gray-800">Sign Up</Button>
+                    <Button type='submit' className="block px-20 bg-gray-900 hover:bg-gray-800">Sign Up</Button>
 
                 </form>
 
