@@ -14,7 +14,7 @@ module.exports = withMT({
   theme: {
     container: {
       center: true,
-      padding: "2rem",
+      padding: "0.5rem",
       screens: {
         "4xl": "1800px",
       },

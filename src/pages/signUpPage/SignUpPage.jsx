@@ -1,7 +1,7 @@
 import SignUpForm from "@/components/pages/signUpPage/SignUpForm";
 import SignInLayout from "@/components/shared/signInLayout/SignInLayout";
 
-export default function SignInPage() {
+export default function SignUpPage() {
 
     return (
         <SignInLayout>

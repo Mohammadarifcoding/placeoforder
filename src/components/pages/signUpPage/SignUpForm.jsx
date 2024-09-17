@@ -4,22 +4,24 @@ import { EyeIcon, EyeOffIcon } from "lucide-react"
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebookF, FaLinkedinIn } from "react-icons/fa6";
 import { Link } from "react-router-dom";
-import { Input } from "@material-tailwind/react";
+import { Checkbox, Input, Typography } from "@material-tailwind/react";
 
 const SignUpForm = () => {
     const [showPassword, setShowPassword] = useState(false)
 
     return (
-        <div className="flex items-center justify-center flex-1 h-full p-6 bg-white md:w-1/2 md:p-10">
-            <div className="w-full max-w-md p-10 space-y-4 rounded-lg shadow-2xl">
+        <div className="flex items-center justify-center flex-1 h-full bg-white sm:p-6 lg:w-1/2 md:p-10">
+            <div className="w-full max-w-lg p-5 space-y-4 rounded-lg shadow-2xl sm:p-10">
                 <div className="space-y-3">
-                    <h5 className="font-medium ">Sign in to</h5>
-                    <h3 className="font-semibold">PLACE <span className="font-light">ORDER</span> </h3>
-                    <p className="text-blue-gray-300">Don&apos;t have an account? <span className=" text-accent">Get Started</span> </p>
+                    <h3 className="font-medium">Create your ID</h3>
                 </div>
                 <form className="space-y-4">
-                    <div className="space-y-4">
-                        <Input type="text" label="User Name" className="w-full" />
+                    <div className="grid grid-cols-1 gap-x-4 gap-y-10 xl:grid-cols-2">
+                        <Input name="firstName" type="text" label="First Name" />
+                        <Input name="lastName" type="text" label="Lastst Name" />
+                        <Input name="businessName" type="text" label="Business Name" />
+                        <Input name="phone" type="text" label="Mobile Number" />
+                        <Input name="email" type="email" label="Email" />
                         <div className="relative">
                             <Input
                                 type={showPassword ? "text" : "password"}
@@ -35,15 +37,33 @@ const SignUpForm = () => {
                             </button>
                         </div>
                     </div>
-                    <div className="text-sm text-right ">
-                        <Link to="#" className="border-b border-muted-foreground">Forgot password?</Link>
-                    </div>
-                    <Button className="w-full bg-gray-900 hover:bg-gray-800">Login</Button>
+
+                    <Checkbox
+                        label={
+                            <Typography
+                                variant="small"
+                                color="gray"
+                                className="items-center font-normal"
+                            >
+                                By proceeding, you agree to the
+                                <Link
+                                    to="#"
+                                    className="font-medium transition-colors text-accent hover:text-primary"
+                                >
+                                    &nbsp;Terms and Conditions
+                                </Link>
+                            </Typography>
+                        }
+                        containerProps={{ className: "-ml-2.5" }}
+                    />
+
+                    <Button className="block px-20 bg-gray-900 hover:bg-gray-800">Sign Up</Button>
+
                 </form>
 
                 <div className="flex items-center justify-between">
                     <div className="w-1/3 h-0.5 border" />
-                    <p className="text-blue-gray-300 whitespace-nowrap">Or login with</p>
+                    <p className="text-blue-gray-300 whitespace-nowrap">Or Sign Up with</p>
                     <div className="w-1/3 h-0.5 border" />
                 </div>
 
@@ -52,7 +72,7 @@ const SignUpForm = () => {
                     <button className="flex items-center gap-1 p-3 text-sm border rounded-full lg:rounded-xl"><FaFacebookF className="text-blue-700 size-4" /> <span className="hidden lg:block">Facebook</span></button>
                     <button className="flex items-center gap-1 p-3 text-sm border rounded-full lg:rounded-xl"><FaLinkedinIn className="text-blue-700 size-4" /> <span className="hidden lg:block">Linkedin</span></button>
                 </div>
-
+                <p className="text-sm text-center">Already have an account? <Link to="/sign-in" className="text-accent">Sign In</Link></p>
             </div>
         </div>
     )

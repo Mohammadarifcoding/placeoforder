@@ -4,9 +4,9 @@ import SalesReport from '@/assets/login/sidePanel.svg';
 const SignInLayout = ({ children }) => {
 
     return (
-        <div className="container relative flex flex-col justify-center h-screen md:flex-row">
-            <div className="flex-1 hidden w-1/2 min-h-screen p-6 overflow-hidden md:block bg-gray-50 md:pt-10">
-                <nav className="flex items-center justify-between w-full mb-8">
+        <div className="container relative flex flex-col justify-center h-screen lg:flex-row">
+            <div className="flex-1 hidden w-1/2 min-h-screen p-6 overflow-hidden lg:block bg-gray-50 md:pt-10">
+                <nav className="flex items-center justify-between w-full mb-2">
                     <div className="text-xl font-bold">PLACE OF ORDER</div>
                     <div className="items-center justify-between hidden w-2/4 gap-3 md:flex">
                         <a href="#" className="font-medium hover:text-muted-foreground">Products</a>

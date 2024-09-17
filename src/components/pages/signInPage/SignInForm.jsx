@@ -10,7 +10,7 @@ const SignInForm = () => {
     const [showPassword, setShowPassword] = useState(false)
 
     return (
-        <div className="flex items-center justify-center flex-1 h-full p-6 bg-white md:w-1/2 md:p-10">
+        <div className="flex items-center justify-center flex-1 h-full sm:p-6 bg-white lg:w-1/2 md:p-10">
             <div className="w-full max-w-md p-10 space-y-4 rounded-lg shadow-2xl">
                 <div className="space-y-3">
                     <h5 className="font-medium ">Sign in to</h5>
@@ -52,7 +52,7 @@ const SignInForm = () => {
                     <button className="flex items-center gap-1 p-3 text-sm border rounded-full lg:rounded-xl"><FaFacebookF className="text-blue-700 size-4" /> <span className="hidden lg:block">Facebook</span></button>
                     <button className="flex items-center gap-1 p-3 text-sm border rounded-full lg:rounded-xl"><FaLinkedinIn className="text-blue-700 size-4" /> <span className="hidden lg:block">Linkedin</span></button>
                 </div>
-
+                <p className="text-sm text-center">Don&apos;t have an account? <Link to="/sign-up" className="text-accent">Sign Up</Link></p>
             </div>
         </div>
     )
