@@ -46,7 +46,7 @@ const SignInForm = () => {
                         </div>
                     </div>
                     <div className="text-sm text-right ">
-                        <Link to="#" className="border-b border-muted-foreground">Forgot password?</Link>
+                        <Link to="/reset-password" className="border-b border-muted-foreground">Forgot password?</Link>
                     </div>
                     <Button type="submit" className="w-full bg-gray-900 hover:bg-gray-800">Sign In</Button>
                 </form>

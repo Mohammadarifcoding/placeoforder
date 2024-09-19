@@ -1,5 +1,5 @@
 import { DynamicSelect } from '../form/DynamicSelect'
-import SalesReport from '@/assets/login/sidePanel1.svg';
+import SalesReport from '@/assets/login/sidePanel.svg';
 import Logo from '/logo.svg'
 import { Menu } from 'lucide-react';
 
