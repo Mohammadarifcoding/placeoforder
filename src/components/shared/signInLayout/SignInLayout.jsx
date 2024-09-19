@@ -1,31 +1,26 @@
 import { DynamicSelect } from '../form/DynamicSelect'
-import SalesReport from '@/assets/login/sidePanel.svg';
+import SalesReport from '@/assets/login/sidePanel1.svg';
+import Logo from '/logo.svg'
+import { Menu } from 'lucide-react';
 
 const SignInLayout = ({ children }) => {
 
     return (
         <div className="container relative flex flex-col justify-center h-screen lg:flex-row">
-            <div className="flex-1 hidden w-1/2 min-h-screen p-6 overflow-hidden lg:block bg-gray-50 md:pt-10">
-                <nav className="flex items-center justify-between w-full mb-2">
-                    <div className="text-xl font-bold">PLACE OF ORDER</div>
-                    <div className="items-center justify-between hidden w-2/4 gap-3 md:flex">
-                        <a href="#" className="font-medium hover:text-muted-foreground">Products</a>
-                        <a href="#" className="font-medium hover:text-muted-foreground">Features</a>
-                        <a href="#" className="font-medium hover:text-muted-foreground">Pricing</a>
-                        <a href="#" className="font-medium hover:text-muted-foreground">FAQ</a>
-                        <DynamicSelect className="rounded-lg outline-none text-primary-foreground bg-accent max-w-16" placeholder="EN" options={['EN', 'BN']} />
-                    </div>
-
-                </nav>
-
+            <div className="flex-1 items-center hidden w-1/2 min-h-screen p-6 overflow-hidden lg:block bg-gray-50 md:pt-10">
+                <Navigations />
                 <div className="flex items-center justify-center w-full h-full">
                     <div>
                         <img className="" src={SalesReport} alt="" />
-                        <p className="w-full text-center description">Create an ecommerce website backed by powerful tools that help you find customers, drive sales, and manage your day-to-day.</p>
+                        <p className="w-full text-center description xl:relative xl:bottom-20">Create an ecommerce website backed by powerful tools that help you find customers, drive sales, and manage your day-to-day.</p>
                     </div>
 
                 </div>
 
+            </div>
+
+            <div className='lg:hidden p-6'>
+                <Navigations />
             </div>
 
             {children}
@@ -35,6 +30,24 @@ const SignInLayout = ({ children }) => {
 }
 
 export default SignInLayout
+
+
+const Navigations = () => {
+    return (
+        <nav className="flex items-center justify-between w-full mb-2">
+            <div className="text-2xl font-semibold flex items-center gap-1"><img src={Logo} /> ECommerce</div>
+            <div className="items-center justify-between 2xl:w-2/4 gap-3 xl:flex hidden">
+                <a href="#" className="font-medium hover:text-muted-foreground">Products</a>
+                <a href="#" className="font-medium hover:text-muted-foreground">Features</a>
+                <a href="#" className="font-medium hover:text-muted-foreground">Pricing</a>
+                <a href="#" className="font-medium hover:text-muted-foreground">FAQ</a>
+                <DynamicSelect className="rounded-lg outline-none text-primary-foreground bg-accent max-w-16" placeholder="EN" options={['EN', 'BN']} />
+            </div>
+            <Menu className='xl:hidden' />
+
+        </nav>
+    )
+}
 
 
 // import { useState } from "react"

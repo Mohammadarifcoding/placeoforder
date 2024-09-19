@@ -24,7 +24,7 @@ export function DynamicSelect({
           {label} {required && <span className="text-red-500">*</span>}
         </label>
       )}
-      <Select required={required} {...rest}>
+      <Select required={required} defaultValue={placeholder || label} {...rest}>
         <SelectTrigger className={className}>
           <SelectValue placeholder={placeholder || label} />
         </SelectTrigger>
