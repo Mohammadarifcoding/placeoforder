@@ -30,7 +30,7 @@ const SendOtp = ({ setStep }) => {
                         <DynamicInput type="email" placeholder="Email" name="email" />
                     </div>
 
-                    <Button type="submit" className="w-full">Reset Password</Button>
+                    <Button type="submit" className="w-full">Send OTP</Button>
                 </form>
 
 

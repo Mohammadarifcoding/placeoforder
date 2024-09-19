@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { handleFormData } from "@/lib/handleFormData";
@@ -7,8 +7,29 @@ import Lock from '@/assets/icons/roket.svg'
 import DynamicInput from "@/components/shared/form/DynamicInput";
 
 const ChangePass = ({ setStep }) => {
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+    const [error, setError] = useState('');
 
     const formRef = useRef();
+
+
+    const handlePasswordChange = (e) => {
+        setPassword(e.target.value);
+    };
+
+    // Handler for the confirm password input
+    const handleConfirmPasswordChange = (e) => {
+        const confirmValue = e.target.value;
+        setConfirmPassword(confirmValue);
+
+        // Check if the confirm password matches up to the length of confirmValue
+        if (password.startsWith(confirmValue)) {
+            setError('');  // No error if confirmPassword is following the pattern
+        } else {
+            setError('Passwords do not match');
+        }
+    };
 
     const handleFormSubmit = (e) => {
         e.preventDefault();
@@ -28,8 +49,9 @@ const ChangePass = ({ setStep }) => {
                 <form ref={formRef} onSubmit={handleFormSubmit} className="space-y-4">
 
 
-                    <DynamicInput type="password" placeholder="Password" name="password" note="Use a strong password" error={''} />
-                    <DynamicInput type="password" placeholder="Confirm Password" name="confirmPassword" error={''} />
+                    <DynamicInput value={password}
+                        onChange={handlePasswordChange} type="password" placeholder="Password" name="password" note="Use a strong password" error={''} />
+                    <DynamicInput value={confirmPassword} onChange={handleConfirmPasswordChange} type="password" placeholder="Confirm Password" name="confirmPassword" error={error} />
 
                     <Button type="submit" className="w-full">Reset Password</Button>
                 </form>

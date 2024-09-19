@@ -10,10 +10,16 @@ const ResetPassword = () => {
 
     return (
         <SignInLayout>
-            {/* <SendOtp setStep={setStep} /> */}
-            {/* <VerifyOtp setStep={setStep} /> */}
-            {/* <ChangePass setStep={setStep} /> */}
-            <ResetComplete />
+            {step === 0 ?
+                < SendOtp setStep={setStep} />
+                : step === 1 ?
+                    <VerifyOtp setStep={setStep} />
+                    : step === 2 ?
+
+                        <ChangePass setStep={setStep} />
+                        :
+                        <ResetComplete />
+            }
         </SignInLayout>
     )
 }
