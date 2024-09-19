@@ -30,7 +30,6 @@ const VerifyOtp = ({ setStep }) => {
                     <OtpField
                         name="otp"
                         className="flex justify-between"
-                        onChange={(otp) => console.log("OTP entered:", otp)} // Optional callback to handle OTP change
                     />
 
                     <Button type="submit" className="w-full">Verify</Button>

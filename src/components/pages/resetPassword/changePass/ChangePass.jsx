@@ -78,7 +78,7 @@ const ChangePass = ({ setStep }) => {
                 <form ref={formRef} onSubmit={handleFormSubmit} className="space-y-4">
 
 
-                    <DynamicInput value={password} onChange={handlePasswordChange} type="password" placeholder="Password" name="password" note={note} error={''} required />
+                    <DynamicInput value={password} onChange={handlePasswordChange} type="password" placeholder="Password" name="password" note={note} error={''} required={true} />
                     <DynamicInput value={confirmPassword} onChange={handleConfirmPasswordChange} type="password" placeholder="Confirm Password" name="confirmPassword" error={error} required />
 
                     <Button type="submit" className="w-full">Reset Password</Button>

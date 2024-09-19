@@ -16,7 +16,7 @@ export function OtpField({ name, className }) {
 
     return (
         <>
-            <input type="number" value={otp} name={name} className="hidden" />
+            <input type="number" defaultValue={otp} name={name} className="hidden" />
             <InputOTP onChange={handleOtp} containerClassName={className} maxLength={6}>
                 {/* <InputOTPGroup> */}
                 <InputOTPSlot className="rounded border" index={0} />
