@@ -1,15 +1,12 @@
-import { useRef, useState } from "react"
+import { useRef } from "react"
 import { Button } from "@/components/ui/button"
-import { EyeIcon, EyeOffIcon } from "lucide-react"
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebookF, FaLinkedinIn } from "react-icons/fa6";
 import { Link } from "react-router-dom";
-import { Input } from "@material-tailwind/react";
 import { handleFormData } from "@/lib/handleFormData";
+import DynamicInput from "@/components/shared/form/DynamicInput";
 
 const SignInForm = () => {
-    const [showPassword, setShowPassword] = useState(false)
-
     const formRef = useRef();
 
     const handleFormSubmit = (e) => {
@@ -28,23 +25,13 @@ const SignInForm = () => {
                     <p className="text-blue-gray-300">Don&apos;t have an account? <span className=" text-accent">Get Started</span> </p>
                 </div>
                 <form ref={formRef} onSubmit={handleFormSubmit} className="space-y-4">
+
                     <div className="space-y-4">
-                        <Input name="name" type="text" label="User Name" className="w-full" />
-                        <div className="relative">
-                            <Input name="password"
-                                type={showPassword ? "text" : "password"}
-                                label="Password"
-                                className="w-full pr-10"
-                            />
-                            <button
-                                type="button"
-                                className="absolute text-gray-500 -translate-y-1/2 right-3 top-1/2"
-                                onClick={() => setShowPassword(!showPassword)}
-                            >
-                                {showPassword ? <EyeOffIcon className="w-5 h-5" /> : <EyeIcon className="w-5 h-5" />}
-                            </button>
-                        </div>
+                        {/* <DynamicInput type="text" placeholder="User Name" name="name" /> */}
+                        <DynamicInput type="email" placeholder="Email" name="email" />
+                        <DynamicInput type="password" placeholder="Password" name="password" />
                     </div>
+
                     <div className="text-sm text-right ">
                         <Link to="/reset-password" className="border-b border-muted-foreground">Forgot password?</Link>
                     </div>

@@ -1,14 +1,13 @@
-import { useRef, useState } from "react"
+import { useRef } from "react"
 import { Button } from "@/components/ui/button"
-import { EyeIcon, EyeOffIcon } from "lucide-react"
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebookF, FaLinkedinIn } from "react-icons/fa6";
 import { Link } from "react-router-dom";
-import { Checkbox, Input, Typography } from "@material-tailwind/react";
+import { Checkbox, Typography } from "@material-tailwind/react";
 import { handleFormData } from "@/lib/handleFormData";
+import DynamicInput from "@/components/shared/form/DynamicInput";
 
 const SignUpForm = () => {
-    const [showPassword, setShowPassword] = useState(false)
     const formRef = useRef();
 
     const handleFormSubmit = (e) => {
@@ -25,27 +24,14 @@ const SignUpForm = () => {
                     <h3 className="font-medium">Create your ID</h3>
                 </div>
                 <form ref={formRef} onSubmit={handleFormSubmit} className="space-y-4">
-                    <div className="grid grid-cols-1 gap-x-4 gap-y-10 xl:grid-cols-2">
-                        <Input name="firstName" type="text" label="First Name" />
-                        <Input name="lastName" type="text" label="Lastst Name" />
-                        <Input name="businessName" type="text" label="Business Name" />
-                        <Input name="phone" type="text" label="Mobile Number" />
-                        <Input name="email" type="email" label="Email" />
-                        <div className="relative">
-                            <Input
-                                name="password"
-                                type={showPassword ? "text" : "password"}
-                                label="Password"
-                                className="w-full pr-10"
-                            />
-                            <button
-                                type="button"
-                                className="absolute text-gray-500 -translate-y-1/2 right-3 top-1/2"
-                                onClick={() => setShowPassword(!showPassword)}
-                            >
-                                {showPassword ? <EyeOffIcon className="w-5 h-5" /> : <EyeIcon className="w-5 h-5" />}
-                            </button>
-                        </div>
+                    <div className="grid grid-cols-1 gap-x-4 xl:grid-cols-2">
+                        <DynamicInput type="text" placeholder="First Name" name="firstName" />
+                        <DynamicInput type="text" placeholder="Last Name" name="lastName" />
+                        <DynamicInput type="text" placeholder="Business Name" name="businessName" />
+                        <DynamicInput type="number" placeholder="Mobile Number" name="phone" />
+                        <DynamicInput type="email" placeholder="Email" name="email" />
+                        <DynamicInput type="password" placeholder="Password" name="password" />
+
                     </div>
 
                     <Checkbox
