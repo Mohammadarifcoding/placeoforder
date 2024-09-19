@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { handleFormData } from "@/lib/handleFormData";
 import { Input } from "@material-tailwind/react";
 import { IoIosArrowBack } from "react-icons/io";
+import Lock from '@/assets/icons/lock.svg'
 
 const ForgotPasswordForm = () => {
     const formRef = useRef();
@@ -17,6 +18,7 @@ const ForgotPasswordForm = () => {
     return (
         <div className="flex items-center justify-center flex-1 h-full bg-white sm:p-6 lg:w-1/2 md:p-10">
             <div className="w-full max-w-md p-10 space-y-4 rounded-lg shadow-2xl">
+                <img className=" mx-auto" src={Lock} />
                 <div className="space-y-3 text-center">
                     <h3 className="font-semibold">Forgot your password?</h3>
                     <p className="text-blue-gray-300">Please enter the email address associated with your account, and we&apos;ll email you a link to reset your password.</p>
@@ -32,7 +34,7 @@ const ForgotPasswordForm = () => {
 
 
 
-                <Link to='/sign-in' className="text-sm text-center flex justify-center items-center font-semibold"><IoIosArrowBack /> Return to sign in</Link>
+                <Link to='/sign-in' className="text-sm text-center flex justify-center items-center font-medium"><IoIosArrowBack /> Return to sign in</Link>
             </div>
         </div>
     )
