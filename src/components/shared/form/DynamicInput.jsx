@@ -7,7 +7,7 @@ const DynamicInput = ({ ...props }) => {
   return (
     <div className="my-3">
       <label className="flex items-center gap-1 mx-1 mb-1 font-semibold">
-        {label} {required && <span className="text-red-500">*</span>}
+        {label} {required && label && <span className="text-red-500">*</span>}
       </label>
       <Input label={placeholder} {...props} />
 

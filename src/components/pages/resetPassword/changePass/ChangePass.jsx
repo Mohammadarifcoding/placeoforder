@@ -10,12 +10,16 @@ const ChangePass = ({ setStep }) => {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [error, setError] = useState('');
+    const [note, setNote] = useState('');
 
     const formRef = useRef();
 
 
     const handlePasswordChange = (e) => {
-        setPassword(e.target.value);
+        const pass = e.target.value;
+        const note = checkPasswordStrength(pass)
+        setNote(note)
+        setPassword(pass);
     };
 
     // Handler for the confirm password input
@@ -29,6 +33,31 @@ const ChangePass = ({ setStep }) => {
         } else {
             setError('Passwords do not match');
         }
+    };
+
+    // Password strength criteria
+    const checkPasswordStrength = (password) => {
+        const lengthCheck = /.{8,}/; // At least 8 characters
+        const lowercaseCheck = /[a-z]/; // Lowercase letter
+        const uppercaseCheck = /[A-Z]/; // Uppercase letter
+        const numberCheck = /\d/; // Number
+        const specialCharCheck = /[!@#$%^&*]/; // Special character
+
+        const hasLowercase = lowercaseCheck.test(password);
+        const hasUppercase = uppercaseCheck.test(password);
+        const hasNumber = numberCheck.test(password);
+        const hasSpecialChar = specialCharCheck.test(password);
+        const isLongEnough = lengthCheck.test(password);
+
+        if (isLongEnough && hasLowercase && hasUppercase && hasNumber && hasSpecialChar) {
+            return 'Strong';
+        } else if (isLongEnough && (hasLowercase || hasUppercase) && (hasNumber || hasSpecialChar)) {
+            return 'Medium';
+        } else if (password.length > 0) {
+            return 'Weak';
+        }
+
+        return ''; // No message if password is empty
     };
 
     const handleFormSubmit = (e) => {
@@ -49,9 +78,8 @@ const ChangePass = ({ setStep }) => {
                 <form ref={formRef} onSubmit={handleFormSubmit} className="space-y-4">
 
 
-                    <DynamicInput value={password}
-                        onChange={handlePasswordChange} type="password" placeholder="Password" name="password" note="Use a strong password" error={''} />
-                    <DynamicInput value={confirmPassword} onChange={handleConfirmPasswordChange} type="password" placeholder="Confirm Password" name="confirmPassword" error={error} />
+                    <DynamicInput value={password} onChange={handlePasswordChange} type="password" placeholder="Password" name="password" note={note} error={''} required />
+                    <DynamicInput value={confirmPassword} onChange={handleConfirmPasswordChange} type="password" placeholder="Confirm Password" name="confirmPassword" error={error} required />
 
                     <Button type="submit" className="w-full">Reset Password</Button>
                 </form>
