@@ -1,4 +1,4 @@
-import SignInForm from "@/components/pages/signInPage/SignInForm";
+import SignInForm from "@/components/pages/signIn/SignInForm";
 import SignInLayout from "@/components/shared/signInLayout/SignInLayout";
 
 export default function SignInPage() {

@@ -1,4 +1,4 @@
-import SignUpForm from "@/components/pages/signUpPage/SignUpForm";
+import SignUpForm from "@/components/pages/signUp/SignUpForm";
 import SignInLayout from "@/components/shared/signInLayout/SignInLayout";
 
 export default function SignUpPage() {
